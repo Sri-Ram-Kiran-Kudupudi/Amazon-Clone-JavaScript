@@ -1,0 +1,85 @@
+ body{
+            font-family:arial;
+            margin:0;
+            padding-top:50px;
+        }
+        .products-grid{
+            display:grid;
+            grid-template-columns: repeat(5,1fr);
+            align-items:center;
+            justify-content:center;
+        }
+           .product-container{
+             padding-top:40px;
+             padding-bottom:25px;
+             padding-left:25px;
+              padding-right:25px;
+              border-right:1px solid rgb(218, 216, 216);
+              border-bottom:1px solid rgb(218, 216, 216);
+              display:flex;
+              flex-direction: column;
+              
+           }
+           .product-image{
+            width:150px;
+            margin-left:37px;
+           }
+           .product-name{
+            margin-top:20px;
+            margin-bottom:20px;
+           }
+           .product-rating-container{
+            display:flex;
+            align-items:center;
+           }
+           .product-rating-stars{
+            width:120px;
+            margin-right:15px;
+           }
+           .product-rating-count{
+            padding-top:4px;
+            font-size:20px;
+            color:rgb(10, 176, 232);
+           }
+           .product-price{
+            margin-top:10px;
+            font-size:22px;
+            font-weight:bold;
+           }
+           .product-quantity-container{
+               margin-top:17px;
+           }
+           select{
+             padding:4px;
+             border-radius:6px;
+             font-size:17px;
+             background-color: rgb(241, 241, 241);
+             border-color:rgb(224, 223, 223);
+             box-shadow: 1px 1px 3px rgb(220, 219, 219);
+             cursor:pointer;
+             
+           }
+           .product-spacer{
+               margin:45px;
+           }
+           .Add-to-cart{
+              display:flex;
+              justify-content: center;
+              align-items:center;
+           }
+           .Add-to-cart-button{
+            width:230px;
+            height:42px;
+            border-radius:50px;
+            border:none;
+            background-color: hsl(43, 100%, 50%);
+            font-size:15px;
+            cursor:pointer;
+               transition: 0.1s;
+           }
+           .Add-to-cart-button:hover{
+            background-color: hsl(43, 86%, 54%);
+           }
+           .Add-to-cart-button:active{
+            background-color: hsl(43, 95%, 70%);
+           }
