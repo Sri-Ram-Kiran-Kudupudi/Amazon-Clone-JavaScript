@@ -1,3 +1,6 @@
+import {cart, addToCart} from '../data/cart.js';
+// import {products} from '../data/products.js';
+
 //understand:if you are add more no. of products then HTML code can be more bigger,to solve this problem ,we have to use the js then dynamically generate products
 //steps
 //save the data in html
@@ -69,30 +72,26 @@ products.forEach((product)=>{
 });
 
 
-
-//make it interactive
 document.querySelector(".js-product-grid").innerHTML=productHtml;
+//make it interactive
+function updateCartQuantity(){
+    let cartQuantity=0;
+    cart.forEach((cartItem)=>{
+        cartQuantity+=cartItem.quantity;
+    });
+document.querySelector(".js-cart-quantity").innerHTML=cartQuantity;
+}
+
+
 
 document.querySelectorAll(".js-add-to-cart")
   .forEach((button)=>{
 button.addEventListener('click',()=>{
     const productId=button.dataset.productId;
-   
-     //below code is for the quantity increment or 1
-    let matchingItem;
-    cart.forEach((item)=>{
-        if(productId===item.productId){
-          matchingItem=item;
-        }
-    })
-    if(matchingItem){
-        matchingItem.quantity+=1;
-    }else{
-        cart.push({
-        productId:productId,
-        quantity:1
-    });
-    }
-    console.log(cart);
+addToCart(productId);
+updateCartQuantity();
+
 });
+
+
 });
