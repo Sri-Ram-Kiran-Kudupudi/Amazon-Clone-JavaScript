@@ -1,4 +1,4 @@
-export let cart=[{
+export let cart=JSON.parse(localStorage.getItem('cart'))||[{
     productId:"e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
     quantity:2,
 },
@@ -8,8 +8,10 @@ export let cart=[{
 }
 ];
 
-
-
+function saveToStorage(){
+    localStorage.setItem('cart',JSON.stringify(cart));//save cart in LS
+}
+//also whenever we update the cart then we need to save it to localstorage
 export function addToCart(productId){
      //below code is for the quantity increment or 1
     let matchingItem;
@@ -26,6 +28,7 @@ export function addToCart(productId){
         quantity:1
         });
     }
+    saveToStorage()
 }
 
 
@@ -37,4 +40,5 @@ export function removeFromCart(productId){
         }
     })
 cart=newCart;
+saveToStorage();
 }
