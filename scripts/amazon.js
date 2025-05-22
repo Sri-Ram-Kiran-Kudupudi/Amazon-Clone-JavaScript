@@ -1,6 +1,6 @@
 import {cart, addToCart} from '../data/cart.js';
 import {products} from '../data/products.js';
-
+import {formatCurrency} from './utils/money.js'
 //understand:if you are add more no. of products then HTML code can be more bigger,to solve this problem ,we have to use the js then dynamically generate products
 //steps
 //save the data in html
@@ -38,7 +38,7 @@ products.forEach((product)=>{
                 </div>
 
                 <div class="product-price">
-                    $${(product.priceRuppes/83).toFixed(2)}
+                    $${formatCurrency(product.priceRuppes)}
                 </div>
 
                 <div class="product-quantity-container">
