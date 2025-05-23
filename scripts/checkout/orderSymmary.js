@@ -5,27 +5,29 @@ import {formatCurrency} from '../utils/money.js';
 import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js'
 import {deliveryOptions,getDeliveryOption} from '../../data/deliveryOptions.js'
 import { renderPaymentSummary } from './paymentSymmary.js';
-// hello();
-// const t=dayjs();
-// console.log(t);
-// const b=t.add(7,'day');
-// console.log(b);
-
 
 export function renderOrderSummary(){
 let cartSummeryHtml='';
 
+//in ordersummary we print all the cart details
+//so first loop through the each cart Item 
     cart.forEach((cartItem)=>{
-    let productId=cartItem.productId;
-     const matchingItem=getProduct(productId);
+    let productId=cartItem.productId;//take id of that cart
+     const matchingItem=getProduct(productId);//pass as a argument to get the that orignal product datils
+//getProduct() return the product of all details
+//we get that product
 
-const deliveryOptionId=cartItem.deliveryOptionId;
-const deliveryOption=getDeliveryOption(deliveryOptionId)
+const deliveryOptionId=cartItem.deliveryOptionId;//take delivary id of that product
+const deliveryOption=getDeliveryOption(deliveryOptionId)//use that id to get the deliveryOption
+//so we use delivery days 
 
-const today=dayjs();
+const today=dayjs();//todays date
 const deliveryDate=today.add(
-deliveryOption.deliveryDays,'days') ;
-const dateString = deliveryDate.format('dddd, MMMM D');
+deliveryOption.deliveryDays,'days') ;//changign the delivery days
+const dateString = deliveryDate.format('dddd, MMMM D');//convert into format
+
+//below html code for the orderSymmary 
+
    cartSummeryHtml+= ` <div class="cart-item-container js-cart-item-container-${matchingItem.id}">
             <div class="delivery-date">
               Delivery date:${dateString}
@@ -103,21 +105,30 @@ function deliveryOptionsHTML(matchingProduct,cartItem){
 
 document.querySelector(".js-order-summary").innerHTML=cartSummeryHtml;
 
-document.querySelectorAll(".js-delete-link")
+document.querySelectorAll(".js-delete-link")//select each delete link 
 .forEach((link)=>{
-    link.addEventListener('click',()=>{
-       const productId=link.dataset.productId;
-       removeFromCart(productId);
-       let deleteProduct=document.querySelector(`.js-cart-item-container-${productId}`)
-       deleteProduct.remove();
+    link.addEventListener('click',()=>{//whenever click the delete button
+//above 3 lines specify each button wen click ***below actions are prfomed***
+       const productId=link.dataset.productId;//use the id of that product pass from the dataset
+       removeFromCart(productId);//remove the product
+
+       //delte that prodcut from the page
+       //below code specifys when we click delet buttom
+       //it will remove from page
+       //so first use dom to select the ""conatianer"" then remove from it using method remove()
+       let container=document.querySelector(`.js-cart-item-container-${productId}`)
+      container.remove();
+      renderPaymentSummary();
+       //below is used for update checkBox
        updateCartQuantity();
     })
 })
 
 
-
-    function updateCartQuantity(){
+//this function used to tack the products quantity 
+  function updateCartQuantity(){
        let cartQuantity=calculateCartQuantity();
+       //update in checkOut page 
 document.querySelector(".js-return-to-home-link").innerHTML=`${cartQuantity} items`;
 }
 
