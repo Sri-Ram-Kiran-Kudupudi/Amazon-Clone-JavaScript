@@ -5,7 +5,7 @@ import {formatCurrency} from '../utils/money.js';
 import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js'
 import {deliveryOptions,getDeliveryOption} from '../../data/deliveryOptions.js'
 import { renderPaymentSummary } from './paymentSymmary.js';
-
+import {renderCheckoutHeader} from './checkoutHeader.js'
 export function renderOrderSummary(){
 let cartSummeryHtml='';
 
@@ -110,14 +110,19 @@ document.querySelectorAll(".js-delete-link")//select each delete link
     link.addEventListener('click',()=>{//whenever click the delete button
 //above 3 lines specify each button wen click ***below actions are prfomed***
        const productId=link.dataset.productId;//use the id of that product pass from the dataset
-       removeFromCart(productId);//remove the product
+       removeFromCart(productId);//remove the product from cart
 
        //delte that prodcut from the page
        //below code specifys when we click delet buttom
        //it will remove from page
        //so first use dom to select the ""conatianer"" then remove from it using method remove()
-       let container=document.querySelector(`.js-cart-item-container-${productId}`)
-      container.remove();
+       //--->
+      //  let container=document.querySelector(`.js-cart-item-container-${productId}`)
+      // container.remove();
+
+      //above 2 lines code and below is same
+
+      renderOrderSummary()
       renderPaymentSummary();
        //below is used for update checkBox
        updateCartQuantity();
