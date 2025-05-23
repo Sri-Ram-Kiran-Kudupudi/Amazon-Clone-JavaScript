@@ -81,5 +81,19 @@ export function updateDeliveryOption(productId,deliveryOptionId){
     })
     //simply cahnge the cart delivery date[so it it perminantly store in the cart]  "every where it will display same date"
     matchingItem.deliveryOptionId=deliveryOptionId;
-    saveToStorage();//
+      saveToStorage();
+}
+
+// This code was copied from the solutions of exercises 14f - 14n.
+export function updateQuantity(productId, newQuantity) {
+  let matchingItem;
+
+  cart.forEach((cartItem) => {
+    if (productId === cartItem.productId) {
+      matchingItem = cartItem;
+    }
+  });
+
+  matchingItem.quantity = newQuantity;
+  saveToStorage();//
 }
