@@ -1,3 +1,3 @@
 export function formatCurrency(priceRuppes){
-   return (priceRuppes/83).toFixed(2)
+   return (Math.round(priceRuppes)/83).toFixed(2)
 }

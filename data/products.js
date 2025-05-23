@@ -1,3 +1,16 @@
+
+//below function tells that,when we pass productId[from the cart] as input then it will check the products array then 
+//it will return the product [based on the common id from both cart and products]
+export function getProduct(productId){
+  let matchingItem;
+   products.forEach((product)=>{
+    if(product.id===productId){
+        matchingItem=product;
+    }
+   });
+   return matchingItem;
+}
+//below is the all list of products [are in the form of objects] stored in the array
 export const products = [
   {
     id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
