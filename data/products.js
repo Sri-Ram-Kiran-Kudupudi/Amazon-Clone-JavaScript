@@ -54,23 +54,23 @@ class Clothing extends Product{
   `;
  }
 }
-const tShirt=new Clothing({
-    id: "83d4ca15-0f35-48f5-b7a3-1ea210004f2e",
-    image: "images/products/adults-plain-cotton-tshirt-2-pack-teal.jpg",
-    name: "Adults Plain Cotton T-Shirt - 2 Pack",
-    rating: {
-      stars: 4.5,
-      count: 56
-    },
-    priceRuppes: 799,
-    keywords: [
-      "tshirts",
-      "apparel",
-      "mens"
-    ],
-    type: "clothing",
-    sizeChartLink: "images/clothing-size-chart.png",
-});
+// const tShirt=new Clothing({
+//     id: "83d4ca15-0f35-48f5-b7a3-1ea210004f2e",
+//     image: "images/products/adults-plain-cotton-tshirt-2-pack-teal.jpg",
+//     name: "Adults Plain Cotton T-Shirt - 2 Pack",
+//     rating: {
+//       stars: 4.5,
+//       count: 56
+//     },
+//     priceRuppes: 799,
+//     keywords: [
+//       "tshirts",
+//       "apparel",
+//       "mens"
+//     ],
+//     type: "clothing",
+//     sizeChartLink: "images/clothing-size-chart.png",
+// });
 
 // const product1=new Product(
 //   {
@@ -89,6 +89,44 @@ const tShirt=new Clothing({
 //     ]
 //   }
 // )
+
+
+
+
+               ///****** BACKEND ******\\\
+
+
+               
+// //we use backend to take data
+// export let products=[];
+// export function loadProducts(fun){
+//   //make a request
+//   const xhr=new XMLHttpRequest();
+
+// //response are takes some times but .send() is not wait
+// //so, in order to wait for response 
+// //we use addEvenet Listener
+
+                    
+//below code works currect but we are useing a varible name ***priceRuppes*** instead *pricecents*
+// xhr.addEventListener('load',()=>{
+//    products=JSON.parse(xhr.response).map((productDetailes)=>{
+//   if(productDetailes.type==="clothing"){
+//     return new Clothing(productDetailes);
+//   }
+//   return new Product(productDetailes)
+// });
+// console.log("load products")
+// fun();
+// });
+// //open a request and GET [get some data from backend]
+// xhr.open('GET','https://supersimplebackend.dev/products');
+
+// xhr.send();//asynchrunus not wait for resupomse
+
+// }
+
+
 export const products = [
   {
     id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
