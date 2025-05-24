@@ -1,4 +1,7 @@
-export let cart=JSON.parse(localStorage.getItem('cart'))||[{
+export let cart;
+loadFromLocalStorage()
+export function loadFromLocalStorage(){
+  cart=JSON.parse(localStorage.getItem('cart'))||[{
     productId:"e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
     quantity:2,
     deliveryOptionId:'1',
@@ -8,6 +11,7 @@ export let cart=JSON.parse(localStorage.getItem('cart'))||[{
      deliveryOptionId:'3',
 }
 ];
+}
 //localstorage  is a api, we simply used to store data in some amount of time
 //in this project we are storing the cart [here first you store when you initilize the cart then
 //when ever we change the cart the also update using localStorage api
