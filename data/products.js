@@ -1,4 +1,4 @@
-
+import {formatCurrency} from '../scripts/utils/money.js';
 //below function tells that,when we pass productId[from the cart] as input then it will check the products array then 
 //it will return the product [based on the common id from both cart and products]
 export function getProduct(productId){
@@ -11,6 +11,48 @@ export function getProduct(productId){
    return matchingItem;
 }
 //below is the all list of products [are in the form of objects] stored in the array
+
+
+class Product{
+  id;
+  image;
+  name;
+  rating;
+  priceRuppes;
+  keywords;
+  constructor(productDetailes){
+    this.id=productDetailes.id;
+    this.image=productDetailes.image;
+    this.name=productDetailes.name;
+    this.rating=productDetailes.rating;
+    this.priceRuppes=productDetailes.priceRuppes;
+    this.keywords=productDetailes.keywords;
+
+  }
+  getStarsUrl(){
+    return `images/ratings/rating-${this.rating.stars*10}.png`;
+  }
+  getPrice(){
+         return `$${formatCurrency(this.priceRuppes)}`;
+  }
+}
+// const product1=new Product(
+//   {
+//     id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
+//     image: "images/products/athletic-cotton-socks-6-pairs.jpg",
+//     name: "Black and Gray Athletic Cotton Socks - 6 Pairs",
+//     rating: {
+//       stars: 4.5,
+//       count: 87
+//     },
+//    priceRuppes: 1090,
+//     keywords: [
+//       "socks",
+//       "sports",
+//       "apparel"
+//     ]
+//   }
+// )
 export const products = [
   {
     id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
@@ -670,4 +712,7 @@ export const products = [
       "mens"
     ]
   }
-];
+].map((productDetailes)=>{
+  return new Product(productDetailes)
+})
+//console.log(products);
