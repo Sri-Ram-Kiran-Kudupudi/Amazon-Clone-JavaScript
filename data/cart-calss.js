@@ -1,13 +1,13 @@
 class Cart{
        cartItems=undefined;
-     localStorageKey=undefined;
+      #localStorageKey=undefined;
 
      constructor(localStorageKey){
-      this.localStorageKey=localStorageKey;
-      this.loadFromLocalStorage()
+      this.#localStorageKey=localStorageKey;
+      this.#loadFromLocalStorage()
      }
-  loadFromLocalStorage(){
-            this.cartItems=JSON.parse(localStorage.getItem(this.localStorageKey))||[{
+  #loadFromLocalStorage(){
+            this.cartItems=JSON.parse(localStorage.getItem(this.#localStorageKey))||[{
             productId:"e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
             quantity:2,
             deliveryOptionId:'1',
@@ -19,7 +19,7 @@ class Cart{
             ];
             }
             saveToStorage(){
-               localStorage.setItem(this.localStorageKey,JSON.stringify(this.cartItems));//save cart in LS
+               localStorage.setItem(this.#localStorageKey,JSON.stringify(this.cartItems));//save cart in LS
              }
              addToCart(productId){
                 //below code is for the quantity increment or 1
