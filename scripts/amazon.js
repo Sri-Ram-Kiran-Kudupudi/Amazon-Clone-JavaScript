@@ -1,7 +1,7 @@
 import {cart, addToCart, calculateCartQuantity} from '../data/cart.js';
 import {products} from '../data/products.js';
 import {formatCurrency} from './utils/money.js'
-//understand:if you are add more no. of products then HTML code can be more bigger,to solve this problem ,we have to use the js then dynamically generate products
+//understand:if you are add more no. of products then it leads to HTML code  more bigger,to solve this problem ,we have to use the js, then dynamically generate products
 //steps
 //save the data in html
 //in  js generate ythe html
@@ -71,8 +71,6 @@ products.forEach((product)=>{
 `;
 
 });
-
-
 document.querySelector(".js-product-grid").innerHTML=productHtml;
 //make it interactive
 function updateCartQuantity(){
@@ -87,6 +85,8 @@ button.addEventListener('click',()=>{
 addToCart(productId);
 updateCartQuantity();
 
+
+          //add a msg above the addTOCart Button
 const addMsg=document.querySelector(`.js-added-to-cart-${productId}`);
  addMsg.classList.add('added-to-cart-visible');
 setTimeout(()=>{

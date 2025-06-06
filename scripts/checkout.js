@@ -5,4 +5,4 @@ import {renderPaymentSummary} from './checkout/paymentSymmary.js'
 import '../data/backend-practice.js'
 renderOrderSummary();
 renderPaymentSummary();
-renderCheckoutHeader()
+renderCheckoutHeader();
